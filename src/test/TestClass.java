@@ -16,8 +16,9 @@ import Pages.Login;
 public class TestClass {
 
     WebDriver driver;
-    Login login;
+    Login login = new Login(driver);
     HomePage homePage;
+ 
     
     @BeforeClass
     public void setup(){
@@ -29,23 +30,46 @@ public class TestClass {
     }
 
     
-    @Test(priority=0)
+    @Test(priority=1)
 
     public void testLogin(){
-try{
     	login = new Login(driver);
     	login.clickLogin();
-    	login.loginTo("niki", "idiot");
-}catch(Exception e)
-{
-	e.printStackTrace();
-}
-    
-    homePage = new HomePage(driver);
-
-    
-  //Verify home page
-  //  Assert.assertTrue(homePage.getHomePageDashboardUserName().contains("manger id : mgr123"));
-
+    	login.Register();
+    	login.loginTo("guneshtorres@gmail.com", "torres@f9");
+    	System.out.println("deallll");
+    	login.profDropDown();
+    	System.out.println("atleast drop down");
+    //	driver.manage().timeouts().implicitlyWait(20000, TimeUnit.SECONDS);
+    	login.deals();
+    	System.out.println("deallllddddddddddd");
     }
+    
+    @Test(priority=2)
+    public void testProfile()
+    {	
+    	driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
+    	login.deals();
+    	login.profDropDown();
+    	System.out.println("deallll");
+    	login.myProfile();
+    	
+    }
+    
+    /*@Test(priority=3)
+    public void testOrders()
+    {	
+    	driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    	login.myOrders();
+    	
+    }
+    
+    @Test(priority=4)
+    public void testLogout()
+    {	
+    	driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    	login.logout();
+    	
+    }*/
+    
 }

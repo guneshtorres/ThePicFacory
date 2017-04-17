@@ -48,6 +48,10 @@ public class Login {
         login.click();
     }
     
+    public void Register(){
+    	WebElement register = driver.findElement(By.xpath("//div/div[2]/a[contains(text(), 'Register')]"));
+    	register.click();
+    }
     //Get the title of Login Page
 
     /*public String getLoginTitle(){
@@ -60,20 +64,40 @@ public class Login {
 
     public void loginTo(String strUserName, String strPasword){
 
-        //Fill user name
-
         this.setUserName(strUserName);
-
-        //Fill password
-
         this.setPassword(strPasword);
+        this.clickSignIn();   
+    }
 
-        //Click Login button
-
-        this.clickSignIn();        
-
-        
-
+  /*  @FindBy(how=How.CSS, using="#\23 > div.col-lg-6.col-md-6.col-sm-6.col-xs-7.inblock > div > div > ul:nth-child(2) > li:nth-child(2) > a > i")
+    WebElement drodwn;*/
+    public void profDropDown(){
+    	WebElement profile = driver.findElement(By.xpath("//i[@class='fa fa-caret-down']"));
+    	profile.click();
+    }
+    
+    public void myProfile(){
+ 
+    	WebElement profile = driver.findElement(By.xpath("//a[contains(text(), 'My Profile')]"));
+    	profile.click();
+    }
+    
+    public void myOrders(){
+    	 
+    	WebElement orders = driver.findElement(By.xpath("//a[contains(text(), 'My Orders')]"));
+    	orders.click();
+    }
+    
+    public void logout(){
+   	 
+    	WebElement logout = driver.findElement(By.xpath("//a[contains(text(), 'Logout')]"));
+    	logout.click();
+    }
+    
+    public void deals()
+    {
+    	WebElement deals = driver.findElement(By.className("offers_content"));
+    	deals.click();
     }
 
 }
